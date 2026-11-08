@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon-Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:linear-gradient(180deg,#ff4d8d 0%,#ff8fc0 30%,#ffe600 70%,#fff59d 100%);background-attachment:fixed;font-family:'Inter',Arial,sans-serif;color:#1a1a1a;line-height:1.5}
+    h1,h2,h3,.logo,.badge,.btn,.prix{font-family:'Poppins',sans-serif}
+    h1{font-weight:800;letter-spacing:-1px}
+    h2{font-weight:700;letter-spacing:-.5px}
+    h2 i{margin-right:8px;color:#ff0066}
+    section.prog h2 i{color:#007bff}
+    .topbar{position:sticky;top:0;z-index:100;background:#ff0066;display:flex;justify-content:space-between;align-items:center;padding:12px 15px;box-shadow:0 4px 15px rgba(0,0,0,.3)}
+    .topbar .logo{color:white;font-weight:800;font-size:16px;letter-spacing:-.3px}
+    .topbar .logo span{color:#ffe600}
+    .btn-menu{background:#ffe600;color:#ff0066;border:2px solid #0099ff;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:10px;cursor:pointer;font-family:'Poppins',sans-serif}
+    .btn-menu i{margin-right:6px}
+    #menuMobile{display:none;background:white;padding:10px 15px;border-radius:0 0 20px 20px;box-shadow:0 10px 25px rgba(0,0,0,.2);position:sticky;top:55px;z-index:99}
+    #menuMobile a{display:flex;align-items:center;gap:12px;text-decoration:none;color:#ff0066;font-weight:600;font-size:16px;padding:14px;border-bottom:1px solid #ffe6ef;font-family:'Poppins',sans-serif}
+    #menuMobile a:last-child{border-bottom:none}
+    #menuMobile a i{width:28px;height:28px;background:#ffe6ef;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+    #menuMobile a.bleu{color:#007bff}
+    #menuMobile a.bleu i{background:#dbeaff;color:#007bff}
+    .hero{background:linear-gradient(160deg,#ff0066 0%,#ff4d8d 50%,#ffcc00 100%);color:white;text-align:center;padding:35px 20px 25px;border-radius:0 0 35px 35px;border-bottom:4px solid #ffe600}
+    .photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid white;display:block;margin:0 auto 15px;box-shadow:0 8px 20px rgba(0,0,0,.3);background:#ffe600}
+    .hero h1{font-size:36px;line-height:1.05;text-shadow:0 2px 5px rgba(0,0,0,.3)}
+    .hero h1 span{color:#ffe600}
+    .badge{display:inline-block;background:#ffe600;color:#ff0066;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px;margin-top:12px;box-shadow:0 3px 10px rgba(0,0,0,.2);text-transform:uppercase}
+    .badge i{margin-right:6px}
+    .badge-bleu{display:inline-block;background:#007bff;color:white;padding:8px 14px;border-radius:14px;font-size:11px;font-weight:700;letter-spacing:.5px;margin-top:10px;text-transform:uppercase;line-height:1.4;text-align:center;max-width:250px;white-space:normal}
+    .badge-bleu i{margin-right:5px}
+    .loc{margin-top:10px;font-size:14px;font-weight:600}
+    .loc i{margin-right:6px;color:#ffe600}
+    .hero-icons{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .hero-icons div{background:rgba(255,255,255,.95);width:55px;height:55px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#ff0066;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+    .hero-icons div.bleu{background:#0099ff;color:white;box-shadow:0 4px 12px rgba(0,153,255,.5)}
+    section{background:#fff9c4;margin:18px 14px;padding:22px;border-radius:20px;box-shadow:0 8px 25px rgba(255,0,102,.25);border:2px solid #ff8fc0}
+    section.prog{background:#dbeaff;border:2px solid #0099ff;box-shadow:0 8px 25px rgba(0,153,255,.25)}
+    section.prog h2{color:#007bff}
+    section.prog .skill-top span:last-child{color:#007bff}
+    h2{color:#ff0066;font-size:21px;margin-bottom:6px}
+    .sous{color:#888;font-size:13px;margin-bottom:15px;font-weight:500}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .card{background:white;border:2px solid #ffe600;border-radius:16px;padding:15px;text-align:center}
+    .card.bleu{border:2px solid #0099ff}
+    .card.bleu b{color:#007bff}
+    .card .ico{width:52px;height:52px;margin:0 auto 10px;background:#fff0f5;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#ff0066}
+    .card.bleu .ico{background:#eaf4ff;color:#007bff}
+    .card.full .ico{background:rgba(255,255,255,.2);color:#ffe600}
+    .card.full.bleu-bg .ico{background:rgba(255,255,255,.2);color:white}
+    .card b{font-size:14px;color:#ff0066;display:block;font-weight:700}
+    .card p{font-size:12.5px;color:#666;margin-top:5px;line-height:1.5}
+    .card.full{grid-column:span 2;background:#ff0066;color:white;border:none}
+    .card.full b{color:#ffe600}
+    .card.full p{color:#ffd9e8}
+    .card.full.bleu-bg{background:linear-gradient(135deg,#007bff,#00c6ff)}
+    .card.full.bleu-bg b{color:white}
+    .card.full.bleu-bg p{color:#e0f2ff}
+    .skill{margin-top:14px}
+    .skill-top{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:5px}
+    .skill-top span:last-child{color:#ff0066}
+    .bar{background:#ffe6ef;height:10px;border-radius:10px;overflow:hidden}
+    .bar div{height:100%;background:linear-gradient(90deg,#ff0066,#ffcc00);border-radius:10px}
+    .bar.bleu{background:#d0eaff}
+    .bar.bleu div{background:linear-gradient(90deg,#007bff,#00c6ff)}
+    .service{display:flex;justify-content:space-between;align-items:center;background:white;border-radius:14px;padding:14px;margin-top:10px;border-left:5px solid #ff0066;gap:10px}
+    .service.bleu{border-left:5px solid #007bff}
+    .service .s-ico{width:38px;height:38px;min-width:38px;background:#fff0f5;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#ff0066;font-size:16px}
+    .service.bleu .s-ico{background:#eaf4ff;color:#007bff}
+    .service b{font-size:14px;font-weight:700}
+    .service span{font-size:12px;color:#777;display:block;margin-top:3px}
+    .prix{background:#ff0066;color:#ffe600;padding:7px 10px;border-radius:10px;font-size:12px;font-weight:700;white-space:nowrap}
+    .prix.bleu{background:#007bff;color:white}
+    .real-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .real-card{background:white;border-radius:16px;overflow:hidden;border:2px solid #ffe600;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+    .real-card img{width:100%;height:140px;object-fit:cover;display:block}
+    .real-card .txt{padding:12px}
+    .real-card small{font-size:11px;font-weight:700;color:#ff0066;letter-spacing:.5px}
+    .real-card b{display:block;font-size:14px;margin:3px 0;font-family:'Poppins',sans-serif}
+    .real-card p{font-size:12px;color:#666}
+    .real-card .stars{color:#ffc107;font-size:11px;margin-top:6px}
+    .real-card.bleu{border-color:#0099ff;background:linear-gradient(135deg,#007bff,#00c6ff);color:white;text-align:center;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+    .real-card.bleu .big-ico{font-size:32px;margin-bottom:10px}
+    .real-card.bleu p{color:#e0f2ff}
+    .real-card.bleu .stars{color:#ffe600}
+    .btn{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px;border-radius:16px;text-decoration:none;font-weight:700;margin-top:12px;font-size:15px;box-shadow:0 5px 15px rgba(0,0,0,.2);cursor:pointer;border:none;width:100%;letter-spacing:.2px}
+    .btn-wa{background:#25D366;color:white}
+    .btn-call{background:#ff0066;color:#ffe600;border:2px solid #ffe600}
+    .btn-copy{background:white;color:#ff0066;border:2px solid #ff0066}
+    .btn-bleu{background:#007bff;color:white;border:2px solid #007bff}
+    .btn-mail{background:#007bff;color:white}
+    .form-box{background:white;padding:18px;border-radius:16px;border:2px solid #0099ff;margin-top:18px}
+    .form-box h3{color:#007bff;font-size:16px;margin-bottom:4px}
+    .form-box h3 i{margin-right:6px}
+    .form-box p{font-size:12px;color:#888;margin-bottom:12px}
+    .form-box label{font-size:13px;font-weight:600;display:block;margin-top:10px;margin-bottom:4px}
+    .form-box input,.form-box select,.form-box textarea{width:100%;padding:12px;border:2px solid #dbeaff;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;background:#f8fbff;outline:none}
+    .form-box input:focus,.form-box select:focus,.form-box textarea:focus{border-color:#007bff;background:white}
+    .qr-box{text-align:center;margin-top:18px;background:white;padding:15px;border-radius:16px;border:2px solid #ffe600}
+    .qr-box img{width:150px;border-radius:10px}
+    footer{text-align:center;padding:20px;color:#ff0066;font-size:12px;font-weight:600}
+    footer span.bleu{color:#007bff}
+    #topBtn{display:none;position:fixed;bottom:20px;right:20px;background:#ff0066;color:#ffe600;border:2px solid #ffe600;width:50px;height:50px;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3);z-index:99;align-items:center;justify-content:center}
+    #msgCopie{text-align:center;font-size:13px;color:green;font-weight:700;margin-top:8px;display:none}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">MON <span>portfolio</span></div>
+  <button class="btn-menu" onclick="ouvrirMenu()"><i class="fa-solid fa-bars"></i> Menu</button>
+</div>
+
+<div id="menuMobile">
+  <a href="#apropos" onclick="fermerMenu()"><i class="fa-solid fa-user"></i> À propos</a>
+  <a href="#services" onclick="fermerMenu()"><i class="fa-solid fa-briefcase"></i> Services & Prix</a>
+  <a href="#prog" onclick="fermerMenu()" class="bleu"><i class="fa-solid fa-code"></i> Programmation</a>
+  <a href="#real" onclick="fermerMenu()"><i class="fa-solid fa-image"></i> Réalisations</a>
+  <a href="#reseaux" onclick="fermerMenu()"><i class="fa-solid fa-share-nodes"></i> Réseaux sociaux</a>
+  <a href="#contact" onclick="fermerMenu()"><i class="fa-solid fa-phone"></i> Contact rapide</a>
+</div>
+
+<div class="hero">
+  <img src="photo.jpg" class="photo">
+  <h1>HOUNKPATIN<br><span>Cédric</span></h1>
+  <div class="badge"><i class="fa-solid fa-circle-check"></i> Disponible pour dépannage</div><br>
+  <div class="badge-bleu"><i class="fa-solid fa-seedling"></i> Débutant en<br>développement web</div>
+  <p class="loc"><i class="fa-solid fa-location-dot"></i> Abomey-Calavi, Bénin</p>
+  <div class="hero-icons">
+    <div><i class="fa-solid fa-snowflake"></i></div>
+    <div><i class="fa-solid fa-bolt"></i></div>
+    <div><i class="fa-solid fa-shirt"></i></div>
+    <div class="bleu"><i class="fa-solid fa-laptop-code"></i></div>
+  </div>
+  <p id="bienvenue" style="margin-top:12px;font-size:13px;background:rgba(0,0,0,.2);display:inline-block;padding:5px 12px;border-radius:20px;"></p>
+</div>
+
+<section id="apropos">
+  <h2><i class="fa-solid fa-user"></i> À propos</h2>
+  <p class="sous">Qui je suis</p>
+  <p style="line-height:1.7;font-size:15px;">Je suis <b>HOUNKPATIN Cédric</b>, opérateur au département <b>Knitting</b> à la <b>Bénin Textile Corporation (BTC) - GDIZ</b>. En dehors de l'usine, je suis technicien en froid, climatisation, électricité et <b style="color:#007bff;">débutant en développement web</b>. J'apprends chaque jour pour créer des sites simples, beaux et utiles.</p>
+  <div class="grid" style="margin-top:15px;">
+    <div class="card"><div class="ico"><i class="fa-solid fa-industry"></i></div><b>GDIZ - BTC</b><p>Opérateur Knitting</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-location-dot"></i></div><b>Calavi</b><p>Intervention rapide</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-screwdriver-wrench"></i> Mes expertises</h2>
+  <p class="sous">4 métiers en 1 personne</p>
+  <div class="grid">
+    <div class="card full"><div class="ico"><i class="fa-solid fa-shirt"></i></div><b>TEXTILE - KNITTING</b><p>Machines à tricoter, contrôle qualité, production</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-snowflake"></i></div><b>FROID & CLIM</b><p>Clim, frigo, congélateur</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-bolt"></i></div><b>ÉLECTRICITÉ</b><p>Bâtiment & Industriel</p></div>
+    <div class="card full bleu-bg"><div class="ico"><i class="fa-solid fa-laptop-code"></i></div><b>PROGRAMMATION - DÉBUTANT</b><p>Je débute, je crée des sites simples comme celui-ci et je progresse chaque jour</p></div>
+  </div>
+</section>
+
+<section id="prog" class="prog">
+  <h2><i class="fa-solid fa-code"></i> Mes compétences en programmation</h2>
+  <p class="sous">Je débute, j'apprends et je progresse chaque jour</p>
+
+  <div style="background:white;border:2px solid #0099ff;border-radius:14px;padding:14px;text-align:center;margin-bottom:15px;">
+    <div style="background:#007bff;color:white;padding:10px 12px;border-radius:14px;font-size:12px;font-weight:700;font-family:'Poppins',sans-serif;line-height:1.4;text-align:center;max-width:280px;margin:0 auto;">
+      <i class="fa-solid fa-seedling"></i> DÉBUTANT<br>EN DÉVELOPPEMENT WEB
+    </div>
+    <p style="font-size:13px;color:#555;margin-top:10px;line-height:1.6;">Je suis <b>débutant</b> en développement web. Je sais déjà créer des sites comme celui-ci en <b>HTML / CSS / JavaScript</b> et je continue à me former pour faire encore mieux.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card bleu"><div class="ico"><i class="fa-brands fa-html5"></i></div><b>HTML / CSS</b><p>Sites vitrines, portfolios</p></div>
+    <div class="card bleu"><div class="ico"><i class="fa-brands fa-js"></i></div><b>JavaScript</b><p>Sites interactifs, boutons, menus</p></div>
+    <div class="card bleu"><div class="ico"><i class="fa-brands fa-python"></i></div><b>Python</b><p>Automatisation, petits programmes</p></div>
+    <div class="card bleu"><div class="ico"><i class="fa-solid fa-mobile-screen"></i></div><b>Sites Mobiles</b><p>100% adaptés au téléphone</p></div>
+  </div>
+  <div class="skill"><div class="skill-top"><span>HTML / CSS</span><span>70%</span></div><div class="bar bleu"><div style="width:70%"></div></div></div>
+  <div class="skill"><div class="skill-top"><span>JavaScript</span><span>40%</span></div><div class="bar bleu"><div style="width:40%"></div></div></div>
+  <div class="skill"><div class="skill-top"><span>Python</span><span>30%</span></div><div class="bar bleu"><div style="width:30%"></div></div></div>
+  <p style="font-size:12px;color:#007bff;text-align:center;margin-top:10px;font-weight:600;"><i class="fa-solid fa-arrow-trend-up"></i> En cours d'apprentissage - Je m'améliore chaque semaine</p>
+  <div class="service bleu"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-globe"></i></div><div><b>Création de Portfolio Simple</b><span>Parfait pour débuter, comme le mien</span></div></div><div class="prix bleu">25 000 F</div></div>
+  <div class="service bleu"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-cart-shopping"></i></div><div><b>Page de Vente / Boutique</b><span>Présente tes produits + bouton WhatsApp</span></div></div><div class="prix bleu">Devis</div></div>
+</section>
+
+<section id="services">
+  <h2><i class="fa-solid fa-briefcase"></i> Services & Prix</h2>
+  <p class="sous">Devis gratuit sur WhatsApp</p>
+  <div id="listeServices">
+    <div class="service"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-snowflake"></i></div><div><b>Entretien Climatiseur</b><span>Nettoyage complet + gaz</span></div></div><div class="prix">10 000 F</div></div>
+    <div class="service"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-temperature-low"></i></div><div><b>Dépannage Frigo</b><span>Frigo / Congélateur</span></div></div><div class="prix">5 000 F</div></div>
+    <div class="service"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-bolt"></i></div><div><b>Dépannage Électrique</b><span>Maisons & Ateliers</span></div></div><div class="prix">5 000 F</div></div>
+    <div class="service"><div style="display:flex;gap:12px;align-items:center;"><div class="s-ico"><i class="fa-solid fa-house"></i></div><div><b>Installation Électrique</b><span>Neuf & Rénovation</span></div></div><div class="prix">Devis</div></div>
+  </div>
+</section>
+
+<section id="real">
+  <h2><i class="fa-solid fa-image"></i> Réalisations</h2>
+  <p class="sous">Mes vrais travaux, en photos</p>
+  <div class="real-grid">
+    <div class="real-card">
+      <img src="real1.jpg" alt="Installation Clim">
+      <div class="txt">
+        <small>CALAVI</small>
+        <b>Installation Clim</b>
+        <p>Split 12000 BTU</p>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+    <div class="real-card">
+      <img src="real2.jpg" alt="Dépannage Frigo">
+      <div class="txt">
+        <small>CALAVI</small>
+        <b>Dépannage Frigo</b>
+        <p>Charge gaz + diagnostic</p>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+    <div class="real-card">
+      <img src="real3.jpg" alt="Réparation Congélateur">
+      <div class="txt">
+        <small>GODOMEY</small>
+        <b>Réparation Congélateur</b>
+        <p>Soudure + mise en service</p>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+    <div class="real-card">
+      <img src="real4.jpg" alt="Installation Électrique Chantier">
+      <div class="txt">
+        <small>CHANTIER</small>
+        <b>Installation Électrique</b>
+        <p>Câblage neuf maison</p>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+    <div class="real-card">
+      <img src="real5.jpg" alt="Machine Knitting GDIZ">
+      <div class="txt">
+        <small>GDIZ - BTC</small>
+        <b>Machine Knitting</b>
+        <p>Textile - Production</p>
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+    <div class="real-card bleu">
+      <div class="big-ico"><i class="fa-solid fa-laptop-code"></i></div>
+      <b>Mon Portfolio Web</b>
+      <p>Mon 1er site - Débutant</p>
+      <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+    </div>
+  </div>
+</section>
+
+<section id="reseaux">
+  <h2><i class="fa-solid fa-share-nodes"></i> Mes réseaux sociaux</h2>
+  <p class="sous">Suis-moi, on reste en contact</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <a href="https://www.facebook.com/profile.php?id=61582520109629" target="_blank" style="text-decoration:none;background:#1877F2;color:white;border-radius:16px;padding:16px;text-align:center;display:block;box-shadow:0 4px 12px rgba(24,119,242,.4);">
+      <i class="fa-brands fa-facebook" style="font-size:28px;"></i>
+      <b style="display:block;margin-top:8px;font-family:'Poppins',sans-serif;font-size:14px;">Facebook</b>
+      <span style="font-size:12px;opacity:.9;">Cédric Hounkpatin</span>
+    </a>
+    <a href="https://www.tiktok.com/@cedrichounkpatin" target="_blank" style="text-decoration:none;background:#000;color:white;border-radius:16px;padding:16px;text-align:center;display:block;box-shadow:0 4px 12px rgba(0,0,0,.4);">
+      <i class="fa-brands fa-tiktok" style="font-size:28px;"></i>
+      <b style="display:block;margin-top:8px;font-family:'Poppins',sans-serif;font-size:14px;">TikTok</b>
+      <span style="font-size:12px;opacity:.9;">@cedrichounkpatin</span>
+    </a>
+    <div style="background:#f0f0f0;color:#999;border-radius:16px;padding:16px;text-align:center;border:2px dashed #ccc;">
+      <i class="fa-brands fa-instagram" style="font-size:28px;"></i>
+      <b style="display:block;margin-top:8px;font-family:'Poppins',sans-serif;font-size:14px;color:#888;">Instagram</b>
+      <span style="font-size:12px;">À venir bientôt</span>
+    </div>
+    <div style="background:#f0f0f0;color:#999;border-radius:16px;padding:16px;text-align:center;border:2px dashed #ccc;">
+      <i class="fa-brands fa-linkedin" style="font-size:28px;"></i>
+      <b style="display:block;margin-top:8px;font-family:'Poppins',sans-serif;font-size:14px;color:#888;">LinkedIn</b>
+      <span style="font-size:12px;">À venir bientôt</span>
+    </div>
+  </div>
+  <a class="btn btn-wa" href="https://wa.me/229169736032?text=Bonjour%20Cédric,%20je%20viens%20de%20voir%20ton%20portfolio" style="margin-top:14px;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+</section>
+
+<section id="contact">
+  <h2><i class="fa-solid fa-phone"></i> Contact rapide</h2>
+  <p class="sous">Réponse en moins de 30 min</p>
+  <a class="btn btn-wa" href="https://wa.me/229169736032?text=Bonjour%20Cédric,%20je%20viens%20de%20voir%20ton%20portfolio"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <a class="btn btn-call" href="tel:+2290169736032"><i class="fa-solid fa-phone"></i> M'appeler</a>
+  <a class="btn btn-mail" href="mailto:hounkpatincedric964@gmail.com?subject=Demande%20de%20devis%20-%20Portfolio&body=Bonjour%20Cédric,%0AJe%20viens%20de%20voir%20ton%20portfolio.%0AJe%20veux%20un%20devis%20pour%20:"><i class="fa-solid fa-envelope"></i> M'envoyer un E-mail</a>
+  <button class="btn btn-copy" onclick="copierNumero()"><i class="fa-solid fa-copy"></i> Copier mon numéro</button>
+  <p id="msgCopie">Numéro copié !</p>
+
+  <div class="form-box">
+    <h3><i class="fa-solid fa-pen-to-square"></i> Demande de devis rapide</h3>
+    <p>Remplis ce formulaire, choisis Email ou WhatsApp, le message part tout seul.</p>
+    <label>Ton nom</label>
+    <input type="text" id="nomClient" placeholder="Ex: Jean, Marie...">
+    <label>Quel service tu veux ?</label>
+    <select id="serviceClient">
+      <option>Entretien Climatiseur - 10 000 F</option>
+      <option>Dépannage Frigo - 5 000 F</option>
+      <option>Dépannage Électrique - 5 000 F</option>
+      <option>Installation Électrique - Devis</option>
+      <option>Création de Portfolio - 25 000 F</option>
+      <option>Page de Vente / Boutique - Devis</option>
+      <option>Autre demande</option>
+    </select>
+    <label>Ton message</label>
+    <textarea id="messageClient" rows="3" placeholder="Ex: Bonjour Cédric, ma clim ne refroidit plus à Calavi..."></textarea>
+    <button class="btn btn-mail" onclick="envoyerEmail()" style="margin-top:15px;"><i class="fa-solid fa-paper-plane"></i> Envoyer par E-mail</button>
+    <button class="btn btn-wa" onclick="envoyerWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Envoyer par WhatsApp</button>
+  </div>
+
+  <div class="qr-box"><img src="qr.png"><p style="font-weight:bold;margin-top:8px;font-size:13px;"><i class="fa-solid fa-qrcode"></i> Scanne pour WhatsApp</p><p style="font-size:12px;color:#007bff;font-weight:bold;margin-top:5px;"><i class="fa-solid fa-envelope"></i> hounkpatincedric964@gmail.com</p></div>
+</section>
+
+<footer>© <span id="annee"></span> HOUNKPATIN Cédric • Portfolio • </footer>
+
+<button id="topBtn" onclick="remonter()"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+const MON_EMAIL = "hounkpatincedric964@gmail.com";
+function ouvrirMenu(){
+  let m = document.getElementById("menuMobile");
+  if(m.style.display === "block"){ m.style.display = "none"; }
+  else{ m.style.display = "block"; }
+}
+function fermerMenu(){
+  document.getElementById("menuMobile").style.display = "none";
+}
+let heure = new Date().getHours();
+let message = "Bienvenue sur mon portfolio !";
+if(heure < 12){ message = "Bonjour et bienvenue !"; }
+else if(heure < 18){ message = "Bon après-midi et bienvenue !"; }
+else{ message = "Bonsoir et bienvenue !"; }
+document.getElementById("bienvenue").textContent = message;
+document.getElementById("annee").textContent = new Date().getFullYear();
+function copierNumero(){
+  navigator.clipboard.writeText("+2290169736032");
+  document.getElementById("msgCopie").style.display = "block";
+  setTimeout(function(){ document.getElementById("msgCopie").style.display = "none"; }, 3000);
+}
+window.onscroll = function(){
+  let btn = document.getElementById("topBtn");
+  if(window.scrollY > 300){ btn.style.display = "flex"; }
+  else{ btn.style.display = "none"; }
+};
+function remonter(){
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function getInfos(){
+  let nom = document.getElementById("nomClient").value || "Un visiteur";
+  let service = document.getElementById("serviceClient").value;
+  let msg = document.getElementById("messageClient").value || "Je veux un devis.";
+  return {nom, service, msg};
+}
+function envoyerEmail(){
+  let d = getInfos();
+  let sujet = encodeURIComponent("Demande de devis - " + d.service);
+  let corps = encodeURIComponent("Bonjour Cédric,\n\nJe m'appelle " + d.nom + ".\nService demandé : " + d.service + "\n\nMessage :\n" + d.msg + "\n\nMerci !");
+  window.location.href = "mailto:" + MON_EMAIL + "?subject=" + sujet + "&body=" + corps;
+}
+function envoyerWhatsApp(){
+  let d = getInfos();
+  let texte = encodeURIComponent("Bonjour Cédric, je suis " + d.nom + ".\nJe veux : " + d.service + "\nMessage : " + d.msg);
+  window.open("https://wa.me/229169736032?text=" + texte, "_blank");
+}
+</script>
+
+</body>
+</html>
